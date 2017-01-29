@@ -1,0 +1,79 @@
+<div class="container-fluid">
+  <div class="row-fluid">
+
+    <div>
+
+      <form class="form-horizontal" role="form">
+
+        <div class="form-group">
+          <label for="query" class="col-sm-2 control-label">Add a new person</label>
+          <div class="col-sm-8">
+            <input ng-change="buttontext='Add';buttonclass='btn btn-primary';taskinputclass=''"
+                   class="form-control"
+                   id="task"
+                   ng-model="Name"
+                   ng-class="taskinputclass"
+                   placeholder="Enter name..">
+          </div>
+          <div class="col-sm-2">
+            <button ng-class="buttonclass"
+                    class="btn btn-primary"
+                    ng-click="addPerson();Name='';">
+                    {{buttontext || 'Add'}}
+            </button>
+          </div>
+        </div>
+
+      </form>
+
+      <form class="form-horizontal" role="form">
+
+        <div class="form-group">
+          <label for="query" class="col-sm-2 control-label">Search</label>
+          <div class="col-sm-9">
+            <input class="form-control" ng-model="query" id="query" placeholder="Query...">
+          </div>
+        </div>
+
+      </form>
+
+      <div class="table-responsive">
+
+        <table class="table table-striped" fixed-header style="height:{{tableheight}}px;">
+
+          <thead>
+            <tr>
+            <th><a ng-click="orderProp='PersonID';reverse=!reverse">No.</a></th>
+            <th><a ng-click="orderProp='Name';reverse=!reverse">Name</a></th>
+            <th><a ng-click="orderProp='Email';reverse=!reverse">Email</a></th>
+            <th><a ng-click="orderProp='Type';reverse=!reverse">Type</a></th>
+            <th><a ng-click="orderProp='Username';reverse=!reverse">Username</a></th>
+            <th><span tooltip-placement="top" tooltip="Delete" class=" glyphicon glyphicon-remove"></th>
+            </tr>
+          </thead>
+
+          <tbody>
+          <tr ng-repeat="person in persons | filter:query | orderBy:orderProp:reverse">
+            <td><a href="#/persons/{{person.PersonID}}" ng-click="navOptionList=''">{{person.PersonID}}</a></td>
+            <td>{{person.Name}}</td>
+            <td>{{person.Email}}</td>
+            <td>{{person.Type}}</td>
+            <td>{{person.Username}}</td>
+            <td><a ng-click="delete(person.PersonID);"><span class=" glyphicon glyphicon-remove"></a></td>
+          </tr>
+          </tbody>
+
+        </table>
+
+      </div>
+
+      <!--
+      <pre><b>Logger</b>
+      </pre>
+      -->
+
+    </div>
+
+  </div>
+</div>
+</div>

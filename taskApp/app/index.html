@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns:ng="http://angularjs.org" lang="en" id="ng-app" ng-app="app">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="cache-control" content="no-cache" />
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="-1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="angularjs taskmanager example">
+  <meta name="author" content="">
+  <link rel="shortcut icon" href="">
+
+  <title>Tasks</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+  <link href="lib/datepicker/css/datepicker.css" rel="stylesheet">
+
+  <!-- Other CSS -->
+  <link href="lib/xeditable/css/xeditable.css" rel="stylesheet">
+  <!--
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/angular-ui/0.4.0/angular-ui.min.css" rel="stylesheet">
+  -->
+
+  <style type="text/css">
+  body {
+
+  }
+  .navbar-static-top {
+    margin-bottom: 19px;
+  }
+
+  .form-horizontal .control-label {
+    text-align: left;
+  }
+  .glyphicon{
+    cursor: pointer;
+  }
+  .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+  a{
+    cursor:pointer;
+  }
+
+  </style>
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  </head>
+
+  <body>
+
+    <!-- Static navbar -->
+    <div class="navbar navbar-default navbar-static-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Task Manager</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="#/tasks">List</a></li>
+            <li><a href="#/persons">Persons</a></li>
+            <li><a href="#/liteman/tables">Liteman</a></li>
+            <li><a href="https://github.com/Soliman/angularjs-crud-test" target="_blank">GitHub</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#/{{LogoutOrLogin || 'Login'}}">{{LogoutOrLogin || 'Login'}}</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="container">
+      <div ng-view></div>
+    </div>
+
+    <!-- JavaScript
+    ================================================== -->
+
+    <!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.0/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.0/angular-route.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.0/angular-cookies.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.0/angular-sanitize.min.js"></script>
+
+    <!-- jQuery -->
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="lib/ui-bootstrap-tpls-0.13.3.min.js"></script>
+
+    <!-- Lib's -->
+    <script src="lib/datepicker/js/bootstrap-datepicker.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>
+    <script src="lib/xeditable/js/xeditable.min.js"></script>
+    <script src="lib/tv4.min.js"></script>
+    <script src="lib/ObjectPath.js"></script>
+    <script src="lib/schema-form.min.js"></script>
+    <script src="lib/bootstrap-decorator.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui/0.4.0/angular-ui.min.js"></script>
+
+
+    <!-- App -->
+    <script src="config.js"></script>
+    <script src="app.module.js"></script>
+    <script src="router.js"></script>
+    <script src="services/globals.service.js"></script>
+    <script src="directives/bsdatepicker.directive.js"></script>
+    <script src="directives/editcell.directive.js"></script>
+    <script src="directives/fixedHeader.directive.js"></script>
+    <script src="directives/angular-ui-bootstrap-modal.js"></script>
+    <script src="controllers/LoginCtrl.js"></script>
+    <script src="controllers/LogoutCtrl.js"></script>
+    <script src="controllers/TasksListCtrl.js"></script>
+    <script src="controllers/TaskDetailCtrl.js"></script>
+    <script src="controllers/PersonsListCtrl.js"></script>
+    <script src="controllers/PersonDetailCtrl.js"></script>
+    <script src="controllers/LiteManTablesCtrl.js"></script>
+    <script src="controllers/LiteManColumnsCtrl.js"></script>
+    <script src="controllers/LiteManRecordsCtrl.js"></script>
+    <script src="controllers/StandardFormCtrl.js"></script>
+
+  </body>
+</html>

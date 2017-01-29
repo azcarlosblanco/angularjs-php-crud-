@@ -1,0 +1,43 @@
+---
+- 
+  name: taskId
+  type: INTEGER
+  notnul: 0
+  default: null
+  isprimarykey: 1
+- 
+  name: task
+  type: varchar(200)
+  notnul: 0
+  isprimarykey: 0
+-
+  name: status
+  type: int(11)
+  notnul: 0
+  isprimarykey: 0
+-
+  name: created_by
+  type: varchar(255)
+  notnul: 0
+  isprimarykey: 0
+-
+  name: created_at
+  type: varchar(25)
+  notnul: 0
+  isprimarykey: 0
+-
+  name: assigned_to
+  type: varchar(255)
+  notnul: 0
+  isprimarykey: 0
+-
+  name: due_date
+  type: varchar(255)
+  notnul: 0
+  isprimarykey: 0
+- 
+  name: timestamp
+  type: DATETIME
+  notnul: 1
+  default: CURRENT_TIMESTAMP
+  isprimarykey: 0

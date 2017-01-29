@@ -1,0 +1,115 @@
+<div>
+
+	<h2>Task: {{taskDetail.task}} [No. {{taskDetail.taskId}}]</h2>
+
+	<br/>
+
+	<form role="form">
+
+		<div class="form-group">
+
+			<input type="hidden" id="taskId" ng-model="taskDetail.taskId" value="{{taskDetail.taskId}}">
+
+			<label for="task">Task</label>
+			<div class="form-group">
+				<input 	class="form-control"
+				id="task"
+				ng-model="taskDetail.task"
+				ng-change="buttontext='Update';buttonclass='btn btn-primary'"
+				value="{{taskDetail.task}}">
+			</div>
+
+			<label for="created_by">Created by</label>
+			<div class="form-group">
+				<input class="form-control"
+				id="created_by"
+				ng-model="taskDetail.created_by"
+				ng-click="buttontext='Update';buttonclass='btn btn-primary'"
+				value="{{taskDetail.created_by}}">
+			</div>
+
+			<label for="created_at">Created at</label>
+			<div class="form-group">
+				<input class="form-control"
+				id="created_at"
+				ng-model="taskDetail.created_at"
+				ng-click="buttontext='Update';buttonclass='btn btn-primary'"
+				value="{{taskDetail.created_at}}"
+				bsdatepicker>
+			</div>
+
+			<label for="assigned_to">Assigned to</label>
+			<div class="form-group">
+				<input class="form-control"
+				id="assigned_to"
+				ng-model="taskDetail.assigned_to"
+				ng-click="lu_f='assigned_to';lu_v='Name';lu_d='Name';lookup('persons');buttontext='Update';buttonclass='btn btn-primary'"
+				value="{{taskDetail.assigned_to}}">
+			</div>
+
+			<label for="due_date">Due date</label>
+			<div class="form-group">
+				<input class="form-control"
+				id="due_date"
+				ng-model="taskDetail.due_date"
+				ng-click="buttontext='Update';buttonclass='btn btn-primary'"
+				value="{{taskDetail.due_date}}"
+				bsdatepicker>
+			</div>
+
+			<label for="status">Status</label>
+			<div class="form-group">
+				<select ng-model="taskDetail.status"
+				ng-change="buttontext='Update';buttonclass='btn btn-primary'"
+				class="form-control">
+				<option ng-selected="{{status.value == taskDetail.status}}"
+				ng-repeat="status in statuses"
+				value="{{status.value}}">
+				{{status.label}}
+			</option>
+		</select>
+	</div>
+
+	<button
+	id="button"
+	class="btn btn-primary"
+	ng-class="buttonclass"
+	ng-click="updateTask();buttonclass='btn btn-success';buttontext='Saved'">
+	{{buttontext}}
+	</button>
+
+
+	<a href="#/tasks"
+	id="button"
+	class="btn btn-primary">
+	Back to list
+	</a>
+
+</div>
+
+<div class="modal fade" tabindex="-1" role="dialog" modal="showModal" close="cancel()">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Lookup</h4>
+      </div>
+      <div class="modal-body">
+				<table class="table table-hover" >
+          <tbody>
+          <tr ng-repeat="d in ld" style="widht:100%;">
+            <td><a ng-click="setVal(lu_f, d[lu_v]);closelookup()">{{d[lu_d]}}</a></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+		    <button class="btn" ng-click="closelookup()">Cancel</button>
+			</div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+</form>
+
+</div>

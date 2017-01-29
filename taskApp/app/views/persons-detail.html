@@ -1,0 +1,98 @@
+<div>
+
+	<h2>Person: {{person.Name}} [No. {{person.PersonID}}]</h2>
+
+	<br/>
+
+	<form role="form">
+
+		<div class="form-group">
+
+			<input type="hidden" id="PersonID" ng-model="person.PersonID" value="{{person.PersonID}}">
+
+			<label for="Name">Name</label>
+			<div class="form-group">
+				<input 	class="form-control"
+				id="Name"
+				ng-model="person.Name"
+				ng-change="buttontext='Update';buttonclass='btn btn-primary'"
+				value="{{person.Name}}">
+			</div>
+
+			<label for="Email">E-mail</label>
+			<div class="form-group">
+				<input class="form-control"
+				id="Email"
+				ng-model="person.Email"
+				ng-click="buttontext='Update';buttonclass='btn btn-primary'"
+				value="{{person.Email}}">
+			</div>
+
+			<label for="Type">Type</label>
+			<div class="form-group">
+				<input class="form-control"
+				id="Type"
+				ng-model="person.Type"
+				ng-click="buttontext='Update';buttonclass='btn btn-primary'"
+				value="{{person.Type}}">
+			</div>
+
+			<label for="Username">Username</label>
+			<div class="form-group">
+				<input class="form-control"
+				id="Username"
+				ng-model="person.Username"
+				ng-click="lu_f='Username';lu_v='Username';lu_d='Username';lookup('users');buttontext='Update';buttonclass='btn btn-primary'"
+				value="{{person.Username}}">
+			</div>
+
+	</div>
+
+	<button
+	id="button"
+	class="btn btn-primary"
+	ng-class="buttonclass"
+	ng-click="update();buttonclass='btn btn-success';buttontext='Saved'">
+	{{buttontext}}
+	</button>
+
+	<a href="#/persons"
+	id="button"
+	class="btn btn-primary">
+	Back to list
+	</a>
+
+</div>
+
+<div class="modal fade" tabindex="-1" role="dialog" modal="showModal" close="cancel()">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Lookup</h4>
+      </div>
+      <div class="modal-body">
+				<table class="table table-hover" >
+					<!--
+					<thead>
+            <tr>
+            <th><a ng-click="orderProp='Name';reverse=!reverse">Name</a></th>
+            </tr>
+          </thead>
+					-->
+          <tbody>
+          <tr ng-repeat="d in ld" style="widht:100%;">
+            <td><a ng-click="setVal(lu_f, d[lu_v]);closelookup()">{{d[lu_d]}}</a></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+				<!-- <button class="btn btn-success" ng-click="ok()">Okay</button> -->
+		    <button class="btn" ng-click="closelookup()">Cancel</button>
+			</div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+</form>

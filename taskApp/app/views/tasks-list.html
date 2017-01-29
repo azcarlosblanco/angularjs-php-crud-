@@ -1,0 +1,100 @@
+<div class="container-fluid">
+  <div class="row-fluid">
+
+    <div>
+
+      <form class="form-horizontal" role="form">
+
+        <div class="form-group">
+          <label for="query" class="col-sm-2 control-label">Add a new task</label>
+          <div class="col-sm-8">
+            <input ng-change="buttontext='Add';buttonclass='btn btn-primary';taskinputclass=''"
+                   class="form-control"
+                   id="task"
+                   ng-model="task"
+                   ng-class="taskinputclass"
+                   placeholder="My task for today is...">
+          </div>
+          <div class="col-sm-2">
+            <button ng-class="buttonclass"
+                    class="btn btn-primary"
+                    ng-click="addTask();task='';">
+                    {{buttontext || 'Add'}}
+            </button>
+          </div>
+        </div>
+
+      </form>
+
+      <form class="form-horizontal" role="form">
+
+        <div class="form-group">
+          <label for="query" class="col-sm-2 control-label">Search</label>
+          <div class="col-sm-9">
+            <input class="form-control" ng-model="query" id="query" placeholder="Query...">
+          </div>
+        </div>
+
+      </form>
+
+      <div class="table-responsive">
+
+        <table class="table table-striped" fixed-header style="height:{{tableheight}}px;">
+
+          <thead>
+            <tr>
+            <th><a ng-click="orderProp='taskId';reverse=!reverse">No.</a></th>
+            <th><a ng-click="orderProp='status';reverse=!reverse">Status</a></th>
+            <th><a ng-click="orderProp='created_by';reverse=!reverse">Created by</a></th>
+            <th><a ng-click="orderProp='created_at';reverse=!reverse">Created at</a></th>
+            <th><a ng-click="orderProp='task';reverse=!reverse">Task</a></th>
+            <th><a ng-click="orderProp='assigned_to';reverse=!reverse">Assigned to</a></th>
+            <th><a ng-click="orderProp='due_date';reverse=!reverse">Due date</a></th>
+            <!--<th><span tooltip-placement="top" tooltip="Edit" class="glyphicon glyphicon-edit"></th>-->
+            <th><span tooltip-placement="top" tooltip="Open" class="glyphicon glyphicon-asterisk"></th>
+            <th><span tooltip-placement="top" tooltip="Pending" class="glyphicon glyphicon-play"></th>
+            <th><span tooltip-placement="top" tooltip="Completed" class="glyphicon glyphicon-ok"></th>
+            <th><span tooltip-placement="top" tooltip="Delete" class=" glyphicon glyphicon-remove"></th>
+            </tr>
+          </thead>
+
+          <tbody>
+          <tr ng-repeat="task in tasks | filter:query | filter:filterCompleted | orderBy:orderProp:reverse"
+              ng-class="{'info' : task.status == 1, 'warning' : task.status == 2, 'success' : task.status == 3}">
+            <td><a href="#/tasks/{{task.taskId}}" ng-click="navOptionList=''">{{task.taskId}}</a></td>
+            <td>{{statuses[task.status-1]['label']}}</td>
+            <td>{{task.created_by}}</td>
+            <td>{{task.created_at}}</td>
+            <td><a href="#" editable-text="task.task" onbeforesave="updateTask(task.taskId, $data, task.status)">{{ task.task || "empty" }}</a></td>
+            <td><a href="#" editable-text="task.assigned_to" onbeforesave="updateCell(task.taskId, 'assigned_to', $data)">{{ task.assigned_to || "empty" }}</a></td>
+            <td>{{task.due_date}}</td>
+            <!--<td><a ng-click="updateTask(task.taskId, task.task, '1');"><span class="glyphicon glyphicon-edit"></a></td>-->
+            <td><a ng-click="updateTask(task.taskId, task.task, '1');"><span class="glyphicon glyphicon-asterisk"></a></td>
+            <td><a ng-click="updateTask(task.taskId, task.task, '2');"><span class="glyphicon glyphicon-play"></a></td>
+            <td><a ng-click="updateTask(task.taskId, task.task, '3');"><span class="glyphicon glyphicon-ok"></a></td>
+            <td><a ng-click="deleteTask(task.taskId);"><span class=" glyphicon glyphicon-remove"></a></td>
+          </tr>
+          </tbody>
+
+        </table>
+
+      </div>
+
+      <div class="checkbox">
+        <label>
+          <input ng-model='showCompletedTasks' type="checkbox">Show completed tasks
+        </label>
+      </div>
+
+      <!--
+      <pre><b>Logger</b>
+      token: {{$storage.token}},
+      Token status: {{tokenStatus}},
+      Username: {{username}}</pre>
+      -->
+
+    </div>
+
+  </div>
+</div>
+</div>

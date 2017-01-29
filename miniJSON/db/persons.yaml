@@ -1,0 +1,37 @@
+---
+-
+  name: PersonID
+  type: INTEGER
+  notnul: 0
+  default: null
+  isprimarykey: 1
+-
+  name: Name
+  type: varchar(255)
+  notnul: 1
+  default: ''
+  isprimarykey: 0
+-
+  name: Email
+  type: varchar(255)
+  notnul: 1
+  default: ''
+  isprimarykey: 0
+-
+  name: Type
+  type: varchar(30)
+  notnul: 1
+  default: ''
+  isprimarykey: 0
+-
+  name: Username
+  type: varchar(255)
+  notnul: 0
+  default: ''
+  isprimarykey: 0
+-
+  name: timestamp
+  type: DATETIME
+  notnul: 1
+  default: CURRENT_TIMESTAMP
+  isprimarykey: 0

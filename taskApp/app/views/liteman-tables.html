@@ -1,0 +1,38 @@
+<div class="container-fluid">
+  <div class="row-fluid">
+
+    <div>
+
+      <div class="table-responsive">
+
+        <table class="table">
+
+          <tr>
+            <th>Table name</th>
+            <th>Column details</th>
+            <th>Records</th>
+          </tr>
+
+          <tr ng-repeat="row in rows">
+            <td>{{row['name']}}</td>  
+            <td><a href="#/liteman/columns/{{ row['name'] }}">D</a></td>
+            <td><a href="#/liteman/records/{{ row['name'] }}">R</a></td>
+          </tr>
+
+
+        </table>
+
+      </div>
+
+<!--
+<pre><b>Logger</b>
+token: {{$storage.token}},
+Token status: {{tokenStatus}},
+Username: {{username}}</pre>
+-->
+
+    </div>
+
+  </div>
+</div>
+</div>
